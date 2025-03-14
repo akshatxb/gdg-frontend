@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fade-mask {
+  -webkit-mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.15962881734725143) 0%, rgba(0, 0, 0, 0.4117296576833859) 54%, rgba(0, 0, 0, 0.6246148117450105) 100%);
+  mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.15962881734725143) 0%, rgba(0, 0, 0, 0.4117296576833859) 54%, rgba(0, 0, 0, 0.6246148117450105) 100%);
+}
+
+@font-face {
+  font-family: "basefont-lg";
+  src: url("/fonts/TWKL-500.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "basefont-md";
+  src: url("/fonts/TWKL-400.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.basefont-bold {
+  font-family: "basefont-lg", sans-serif;
+}
+
+.basefont-medium {
+  font-family: "basefont-md", sans-serif;
+}
