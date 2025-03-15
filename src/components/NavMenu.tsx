@@ -11,7 +11,7 @@ export type NavMenuProps = {
 const NavMenu = forwardRef<HTMLDivElement, NavMenuProps>(
     ({ contents, links, classnames, ...props }, ref) => {
         return (
-            <div ref={ref} className={clsx("bg-transparent h-fit px-7 py-3 rounded-lg font-medium basefont-medium backdrop-blur-sm shadow-2xl", classnames)} {...props}>
+            <div ref={ref} className={clsx("bg-white/5 h-fit px-7 py-3 rounded-lg font-medium basefont-medium backdrop-blur-sm shadow-5xl", classnames)} {...props}>
                 <ul className="flex justify-center items-center gap-10">
                     {contents.map((content, index) => (
                         <li key={index} className="hover:text-gray-400 transition duration-200 hover:scale-95">

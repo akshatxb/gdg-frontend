@@ -30,6 +30,11 @@ body {
   mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.15962881734725143) 0%, rgba(0, 0, 0, 0.4117296576833859) 54%, rgba(0, 0, 0, 0.6246148117450105) 100%);
 }
 
+.fade-mask-black {
+  -webkit-mask-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 71%, rgba(0, 0, 0, 0.11481089017638302) 100%);
+  mask-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 71%, rgba(0, 0, 0, 0.11481089017638302) 100%);
+}
+
 @font-face {
   font-family: "basefont-lg";
   src: url("/fonts/TWKL-500.ttf") format("truetype");
@@ -44,10 +49,21 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "basefont-sm";
+  src: url("/fonts/TWKL-200.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .basefont-bold {
   font-family: "basefont-lg", sans-serif;
 }
 
 .basefont-medium {
   font-family: "basefont-md", sans-serif;
+}
+
+.basefont-light {
+  font-family: "basefont-sm", sans-serif;
 }

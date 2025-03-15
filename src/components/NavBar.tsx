@@ -13,8 +13,8 @@ export default function NavBar() {
             <Logo src={LogoIcon} />
             <NavMenu links={menuLinks as [string, ...string[]]} contents={menuContents as [string, ...string[]]} classnames="ml-40" />
             <div className="">
-                <Button content="Contact Us" variant="transparent" size="lg" />
-                <Button content="Sign In" variant="primary" size="lg" className="px-8" />
+                <Button content="Contact Us" variant="transparent" size="md" />
+                <Button content="Sign In" variant="primary" size="md" />
             </div>
         </div>
     )
