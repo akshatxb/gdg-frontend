@@ -19,14 +19,15 @@ export default function Home() {
             className="absolute -z-10 top-0 left-0 fade-mask h-[54rem] object-cover"
             src={HeroImage1}
             alt=""
+            priority
           />
           <div className="flex-col">
             <div className="text-8xl basefont-bold pt-10 w-4/6 mb-5">
               AI driven agriculture for a sustainable tomorrow
             </div>
             <div className="flex gap-5">
-              <Button content="Get Started" variant="primary" link="/login"/>
-              <Button variant="outline" content="Learn More" link="#"/>
+              <Button content="Get Started" variant="primary" link="/login" />
+              <Button variant="outline" content="Learn More" link="#" />
             </div>
           </div>
         </main>

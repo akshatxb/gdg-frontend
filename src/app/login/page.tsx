@@ -47,7 +47,7 @@ export default function Login() {
 
     return (
         <div className="bg-black h-dvh w-dvw text-black relative z-0 basefont-medium">
-            <Image src={LoginImage} alt="" className="object-cover absolute -z-10 h-full w-full fade-mask-black" />
+            <Image src={LoginImage} alt="" priority className="object-cover absolute -z-10 h-full w-full fade-mask-black" />
             <div className="flex justify-center items-center h-full">
                 <div className="py-10 px-5 bg-white/20 backdrop-blur-sm shadow-xl rounded-2xl flex flex-col items-center">
                     <p className="text-4xl basefont-bold mb-20">Get Started</p>
