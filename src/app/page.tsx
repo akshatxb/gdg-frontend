@@ -25,7 +25,7 @@ export default function Home() {
               AI driven agriculture for a sustainable tomorrow
             </div>
             <div className="flex gap-5">
-              <Button content="Get Started" variant="primary" />
+              <Button content="Get Started" variant="primary" link="/login"/>
               <Button variant="outline" content="Learn More" />
             </div>
           </div>

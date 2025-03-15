@@ -1,8 +1,10 @@
 import clsx from "clsx";
+import Link from "next/link";
 import { Component, forwardRef } from "react";
 
 export type ButtonProps = {
     content: string;
+    link: string;
     variant?: 'primary' | 'secondary' | 'transparent' | 'outline';
     size?: 'sm' | 'md' | 'lg';
     className?: string;
@@ -10,7 +12,7 @@ export type ButtonProps = {
 } & React.ComponentPropsWithoutRef<'button'>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ content, variant = "primary", size = "md", className, as: Component = "button", ...props }, ref) => {
+    ({ content, link, variant = "primary", size = "md", className, as: Component = "button", ...props }, ref) => {
 
         const variantClasses = {
             primary: "bg-white text-black",
@@ -31,7 +33,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 ref={ref}
                 className={clsx("rounded-4xl transition-transform duration-200 cursor-pointer hover:scale-95", variantClasses[variant], sizeClasses[size], className)}
                 {...props}>
-                {content}
+                <Link href={link || "#"}>{content}</Link>
             </Component >
         )
     }

@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 import { forwardRef } from "react";
 
 
@@ -15,7 +16,7 @@ const NavMenu = forwardRef<HTMLDivElement, NavMenuProps>(
                 <ul className="flex justify-center items-center gap-10">
                     {contents.map((content, index) => (
                         <li key={index} className="hover:text-gray-400 transition duration-200 hover:scale-95">
-                            <a href={links[index] || '#'}>{content}</a>
+                            <Link href={links[index] || '#'}>{content}</Link>
                         </li>
                     ))}
                 </ul>
