@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { Component, forwardRef } from "react";
+import { forwardRef } from "react";
 
 export type ButtonProps = {
     content: string;
@@ -38,5 +38,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )
     }
 );
+
+Button.displayName = 'Button'
 
 export default Button;

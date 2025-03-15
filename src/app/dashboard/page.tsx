@@ -4,7 +4,7 @@ import useAuthStore from "@/hooks/useAuthStore"
 
 export default function Dashboard() {
 
-    const { user, isAuthenticated, login, logout } = useAuthStore();
+    const { isAuthenticated } = useAuthStore();
 
     return (
         <div className="bg-amber-600">

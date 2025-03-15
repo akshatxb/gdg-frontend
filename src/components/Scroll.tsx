@@ -1,18 +1,18 @@
 "use client";
 
-import ReactLenis, { useLenis } from "lenis/react"
+import ReactLenis from "lenis/react"
 
 export type ScrollProps = {
     children: React.ReactNode
 }
 
 const Scroll = ({ children }: ScrollProps) => {
-    const lenis = useLenis(({ scroll }) => {
-        // called in every scroll
-    })
+    // const lenis = useLenis(({ scroll }) => {
+    //     // called in every scroll
+    // })
 
     return (
-        <ReactLenis root options={{easing: (t) => 1 - Math.pow(1 - t, 3)}}>
+        <ReactLenis root options={{ easing: (t) => 1 - Math.pow(1 - t, 3) }}>
             {children}
         </ReactLenis>
     )

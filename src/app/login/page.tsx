@@ -15,8 +15,8 @@ export type LoginData = {
 
 export default function Login() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
-    const { user, isAuthenticated, login, logout } = useAuthStore();
+    const { register, handleSubmit } = useForm<LoginData>();
+    const { login } = useAuthStore();
 
 
     const onSubmit: SubmitHandler<LoginData> = async (data) => {
@@ -36,7 +36,7 @@ export default function Login() {
             }
         }
         catch (error) {
-            console.error("Invalid User Credentials.")
+            console.error("Invalid User Credentials." + error)
         }
 
     }

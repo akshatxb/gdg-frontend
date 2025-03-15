@@ -8,9 +8,11 @@ export type LogoProps = {
 const Logo = forwardRef<HTMLImageElement, LogoProps>(
     ({ src, ...props }, ref) => {
         return (
-            <Image ref={ref} src={src} className="h-10 w-10" alt="" />
+            <Image {...props} ref={ref} src={src} className="h-10 w-10" alt="" />
         )
     }
 )
+
+Logo.displayName = 'Logo'
 
 export default Logo

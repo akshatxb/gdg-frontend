@@ -25,5 +25,7 @@ const NavMenu = forwardRef<HTMLDivElement, NavMenuProps>(
     }
 )
 
+NavMenu.displayName = 'NavMenu'
+
 
 export default NavMenu

@@ -26,7 +26,7 @@ export default function Home() {
             </div>
             <div className="flex gap-5">
               <Button content="Get Started" variant="primary" link="/login"/>
-              <Button variant="outline" content="Learn More" />
+              <Button variant="outline" content="Learn More" link="#"/>
             </div>
           </div>
         </main>
