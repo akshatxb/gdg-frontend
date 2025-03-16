@@ -26,7 +26,7 @@ export default function Login() {
 
         try {
             setloading()
-            const response = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + 'api/v1/auth/register', {
+            const response = await fetch('https://discrete-lion-fairly.ngrok-free.app/api/v1/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(credentials)
@@ -61,7 +61,7 @@ export default function Login() {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + 'api/v1/auth/verify', {
+                const res = await fetch('https://discrete-lion-fairly.ngrok-free.app/api/v1/auth/verify', {
                     method: 'POST',
                     credentials: 'include'
                 })
