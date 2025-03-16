@@ -1,18 +1,14 @@
 "use client";
 
-import useAuthStore from "@/hooks/useAuthStore"
+import useAuth from "../store/useAuth";
 
 export default function Dashboard() {
 
-    const { isAuthenticated } = useAuthStore();
+    const {} = useAuth();
 
     return (
         <div className="bg-amber-600">
-            {isAuthenticated ? (
-                <div>Logged In</div>
-            ) : (
-                <div>Logged Out</div>
-            )};
+            this is the dashboard
         </div>
     );
 }

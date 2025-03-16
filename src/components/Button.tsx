@@ -1,22 +1,25 @@
+"use client";
+
 import clsx from "clsx";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { forwardRef } from "react";
 
 export type ButtonProps = {
     content: string;
-    link: string;
+    link?: string;
     variant?: 'primary' | 'secondary' | 'transparent' | 'outline';
     size?: 'sm' | 'md' | 'lg';
     className?: string;
-    as?: React.ElementType;
 } & React.ComponentPropsWithoutRef<'button'>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ content, link, variant = "primary", size = "md", className, as: Component = "button", ...props }, ref) => {
+    ({ content, link = '#', variant = "primary", size = "md", className, ...props }, ref) => {
+
+        const router = useRouter();
 
         const variantClasses = {
-            primary: "bg-white text-black",
-            secondary: "bg-black text-white",
+            primary: "bg-white text-black ",
+            secondary: "bg-black text-white disabled:bg-black/70",
             transparent: "text-white hover:text-gray-300",
             outline: "border-3 border-white text-white",
         };
@@ -27,14 +30,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             lg: "px-6 py-4 text-lg",
         };
 
+        const handleClick = () => {
+            router.push(link)
+        }
 
         return (
-            <Component
+            <button
                 ref={ref}
-                className={clsx("rounded-4xl transition-transform duration-200 cursor-pointer hover:scale-95", variantClasses[variant], sizeClasses[size], className)}
+                onClick={handleClick}
+                className={clsx("rounded-4xl transition-transform duration-200 cursor-pointer hover:scale-95 disabled:scale-90", variantClasses[variant], sizeClasses[size], className)}
                 {...props}>
-                <Link href={link || "#"}>{content}</Link>
-            </Component >
+                {content}
+            </button >
         )
     }
 );

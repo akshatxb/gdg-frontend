@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/Button";
 import NavMenu from "./NavMenu";
 import Logo from "./Logo";
@@ -7,6 +9,7 @@ export default function NavBar() {
 
     const menuContents = ['Home', 'About', 'Guide']
     const menuLinks = ['/', '/about', '/guide']
+
 
     return (
         <div className="fixed z-10 flex justify-between items-center w-full px-14 py-7">
