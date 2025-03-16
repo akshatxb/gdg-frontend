@@ -56,24 +56,26 @@ export default function Login() {
         window.location.href = "oauth url"
     }
 
-    const checkAuth = async () => {
-        try {
-            const res = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + 'api/v1/auth/verify', {
-                method: 'POST',
-                credentials: 'include'
-            })
-            if (res.ok) {
-                router.push('/dashboard')
-            }
-        }
-        catch (error) {
-            window.alert(error)
-        }
-    }
+
 
     useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const res = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + 'api/v1/auth/verify', {
+                    method: 'POST',
+                    credentials: 'include'
+                })
+                if (res.ok) {
+                    router.push('/dashboard')
+                }
+            }
+            catch (error) {
+                window.alert(error)
+            }
+        }
+
         checkAuth();
-    }, [checkAuth])
+    }, [])
 
     return (
         <div className="bg-black h-dvh w-dvw text-black relative z-0 basefont-medium" >
