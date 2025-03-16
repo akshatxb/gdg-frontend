@@ -9,13 +9,15 @@ import Link from "next/link";
 import useDisable from "../store/useDiable";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { isAxiosError } from "axios";
+import authApi from "@/lib/api";
 
 export type LoginData = {
     email: string;
     password: string
 }
 
-export default function Login() {
+export default function Register() {
 
     const { register, handleSubmit, setError, formState: { errors } } = useForm<LoginData>();
     const { loading, setloading } = useDisable();
@@ -26,27 +28,18 @@ export default function Login() {
 
         try {
             setloading()
-            const response = await fetch('https://discrete-lion-fairly.ngrok-free.app/api/v1/auth/register', {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(credentials)
-            })
-
+            const response = await authApi.post("/register", credentials)
             if (response.status === 200) {
                 router.push('/dashboard')
             }
-
-            else if (response.status === 400) {
-                setError("email", { type: "manual", message: "Email already in use" })
-            }
-            else {
-                setError("root", { type: "manual", message: "Something went wrong" })
-            }
         }
         catch (error) {
-            setError("root", { type: "manual", message: "Something went wrong" })
-            console.log(error)
+            if (isAxiosError(error)) {
+                setError("root", { type: "manual", message: error?.response?.data?.message })
+            }
+            else {
+                setError("root", { type: "manual", message: "Unexpected Error" })
+            }
         }
         finally {
             setloading()
@@ -57,26 +50,41 @@ export default function Login() {
         window.location.href = "oauth url"
     }
 
-
-
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch('https://discrete-lion-fairly.ngrok-free.app/api/v1/auth/verify', {
-                    method: 'POST',
-                    credentials: 'include'
-                })
-                if (res.ok) {
+                const response = await authApi.post("/verify")
+                if (response.status === 200) {
                     router.push('/dashboard')
+                    return
                 }
             }
             catch (error) {
-                window.alert(error)
+                if (isAxiosError(error)) {
+                    if (error?.response?.data?.error === 'expired_token' || error?.response?.data?.error === 'no_token')
+                        try {
+                            const res = await authApi.post("/refresh")
+                            if (res.status === 200) {
+                                router.push('/dashboard')
+                                return
+                            }
+                        }
+                        catch (error) {
+                            if (isAxiosError(error)) {
+                                if (error?.response?.data?.error === 'no_token') {
+                                    return
+                                }
+                            }
+                        }
+                }
+                await authApi.post("/logout")
+                console.log(error)
+                return
             }
         }
 
         checkAuth();
-    }, [])
+    }, [router])
 
     return (
         <div className="bg-black h-dvh w-dvw text-black relative z-0 basefont-medium" >
