@@ -45,6 +45,7 @@ export default function Login() {
         }
         catch (error) {
             setError("root", { type: "manual", message: "Something went wrong" })
+            console.log(error)
         }
         finally {
             setloading()
@@ -66,13 +67,13 @@ export default function Login() {
             }
         }
         catch (error) {
-            window.alert("Internal Sever Error")
+            window.alert(error)
         }
     }
 
     useEffect(() => {
         checkAuth();
-    }, [])
+    }, [checkAuth])
 
     return (
         <div className="bg-black h-dvh w-dvw text-black relative z-0 basefont-medium" >

@@ -86,7 +86,7 @@ export default function Login() {
                         <Button content="Sign In" variant="secondary" type="submit" className="px-7" />
                     </form>
                     <div className="mb-4">
-                        <p>Don't have an account ? <span className="text-white"><Link href={'/register'}>Register</Link></span></p>
+                        <p>Don't have an account ? <span className="text-white"><Link href={"/register"}>Register</Link></span></p>
                     </div>
                     <div className="border-t-1 border-black w-full flex justify-center items-center py-4 text-white">
                         <div onClick={handleGoogleAuth} className="flex justify-center items-center gap-3 text-sm bg-black px-4 py-3 rounded-4xl hover:scale-95 transition-transform duration-200 cursor-pointer">
